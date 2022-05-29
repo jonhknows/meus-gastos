@@ -29,6 +29,7 @@
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
   
 </head>
 <body>
@@ -37,8 +38,11 @@
 	<div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
+          <div class="col-sm-6 d-flex flex-row bd-highlight mb-3">
             <h1 class="m-0">Minhas receitas</h1>
+             <button type="button" class="btn btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg">
+              	 <i class="fas fa-plus-circle fa-lg" style="color: #dc3545; padding-top:6px;"></i>
+              </button>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -176,8 +180,10 @@
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
+    <div th:replace="pages/receita/modal/novaReceitaModal :: novaReceitaModal"></div>
 </div>
 <th:block layout:fragment="receita-script">
+	<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 	<script type="text/javascript" charset="utf-8">
 
 	    var activeLink = document.getElementsByClassName("receita");
