@@ -15,6 +15,9 @@ public class Categoria {
 	private Long id;
 	
 	private String descricao;
+	
+	private Boolean ativo;
+	
 	public Long getId() {
 		return id;
 	}
@@ -26,6 +29,12 @@ public class Categoria {
 	}
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+	public Boolean getAtivo() {
+		return ativo;
+	}
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
 	}
 	@Override
 	public int hashCode() {
@@ -41,7 +50,6 @@ public class Categoria {
 			return false;
 		Categoria other = (Categoria) obj;
 		return Objects.equals(id, other.id);
-	}
-	
+	}	
 
 }

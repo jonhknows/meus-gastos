@@ -16,6 +16,8 @@ public class Subcategoria {
 	
 	private String descricao;
 	
+	private Boolean ativo;
+	
 	public Long getId() {
 		return id;
 	}
@@ -27,6 +29,12 @@ public class Subcategoria {
 	}
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+	public Boolean getAtivo() {
+		return ativo;
+	}
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
 	}
 	@Override
 	public int hashCode() {

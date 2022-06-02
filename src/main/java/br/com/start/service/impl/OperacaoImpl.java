@@ -1,11 +1,13 @@
 package br.com.start.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import br.com.start.model.Operacao;
 import br.com.start.repository.OperacaoRepository;
 import br.com.start.service.OperacaoService;
 
+@Service
 public class OperacaoImpl implements OperacaoService{
 	
 	@Autowired
