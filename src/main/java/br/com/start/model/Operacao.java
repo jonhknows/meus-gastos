@@ -8,10 +8,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
+
+import br.com.start.model.enums.Fonte;
+import br.com.start.model.enums.StatusPagamento;
 
 @Entity
 public class Operacao {
@@ -33,7 +38,17 @@ public class Operacao {
 	
 	private String obs;
 	
-	private Boolean pago;
+	private StatusPagamento pago;
+	
+	@ManyToOne
+	@JoinColumn(name = "fk_cateogoria")
+	private Categoria categoria;
+	
+	@ManyToOne
+	@JoinColumn(name = "fk_subcateogoria")
+	private Subcategoria subcategoria;
+	
+	private Fonte fonte;
 
 	public Long getId() {
 		return id;
@@ -83,12 +98,37 @@ public class Operacao {
 		this.obs = obs;
 	}
 
-	public Boolean getPago() {
+
+	public StatusPagamento getPago() {
 		return pago;
 	}
 
-	public void setPago(Boolean pago) {
+	public void setPago(StatusPagamento pago) {
 		this.pago = pago;
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
+	public Subcategoria getSubcategoria() {
+		return subcategoria;
+	}
+
+	public void setSubcategoria(Subcategoria subcategoria) {
+		this.subcategoria = subcategoria;
+	}
+
+	public Fonte getFonte() {
+		return fonte;
+	}
+
+	public void setFonte(Fonte fonte) {
+		this.fonte = fonte;
 	}
 
 	@Override

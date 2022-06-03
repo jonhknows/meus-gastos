@@ -1,11 +1,13 @@
 package br.com.start.model;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Categoria {
@@ -17,6 +19,9 @@ public class Categoria {
 	private String descricao;
 	
 	private Boolean ativo;
+	
+	@OneToMany(mappedBy = "categoria")
+	private List<Operacao> operacoes;	
 	
 	public Long getId() {
 		return id;

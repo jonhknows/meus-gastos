@@ -13,11 +13,11 @@
 					<div class="form-row">
 						<div class="form-group col-md-8">
 							<label for="descricao">Descrição:</label>
-							<input placeholder="Descrição" type="text" class="form-control" id="descricao">
+							<input placeholder="Descrição" type="text" class="form-control" th:field="*{descricao}">
 						</div>
 						<div class="form-group col-md-4">
 							<label for="valor">Valor:</label>
-							<input id="valor" placeholder="R$ 0,00" th:field="*{valor}" class="form-control" type="text" />
+							<input placeholder="R$ 0,00" th:field="*{valor}" class="form-control" type="text" />
 						</div>
 					</div>
 					<div class="form-row">
@@ -33,7 +33,7 @@
 <!-- 						</div> -->
 						<div class="form-group col-md-5">
 							<label for="categoria">Categoria:</label>
-							<select id="categoria" class="form-control">
+							<select th:field="*{categoria}" class="form-control">
 								<option value="">Selecione...</option>
 								<option value="1">moradia</option>
 								<option value="2">alimentação</option>
@@ -47,14 +47,21 @@
 						</div>
 						<div class="form-group col-md-5">
 							<label for="subcategoria">Sub-categoria:</label>
-							<select id="subcategoria" class="form-control">
-								<option selected>Selecione...</option>
-								<option>...</option>
+							<select th:field="*{subcategoria}" class="form-control">
+								<option value="">Selecione...</option>
+								<option value="1">luz</option>
+								<option value="2">água</option>
+								<option value="3">condomínio</option>
+								<option value="4">supermercado</option>
+								<option value="5">internet</option>
+								<option value="6">móveis</option>
+								<option value="7">reforma</option>
+								<option value="8">outros</option>
 							</select>
 						</div>
 						<div class="form-group col-md-2">
 							<label for="toggle-event">Status:</label><br />
-							<input id="toggle-event" type="checkbox" checked 
+							<input value="0" id="toggle-event" type="checkbox" checked 
 								data-toggle="toggle" 
 								data-on="Pago" data-off="Pendente" 
 								data-onstyle="success" data-offstyle="danger" 
@@ -64,21 +71,24 @@
 						
 						
 					</div>
+					
 					<div class="form-row">
-						<div class="form-group col-md-3">
-							<label for="subcategoria">Fonte:</label>
-							<!--<select th:field="*{fonte}" class="form-control"> -->
-							<select class="form-control">
+						<div class="form-group col-md-3">		
+							<label for="fonte">Fonte:</label><br />					
+							<select th:field="*{fonte}" class="form-control">			
 								<option value="">Selecione...</option>
+								<option  th:each="fonte : ${T(br.com.start.model.enums.Fonte).values()}" th:text="${fonte.getDescricao()}" th:value="${fonte}"></option>
+								<!--
 								<option value="1">Carteira</option>
 								<option value="2">Conta-Corrente</option>
 								<option value="3">Poupança</option>
+								-->
 							</select>
 						</div>
 						<div class="form-group col-md-9">
-							<label for="subcategoria">Comprovante:</label>
+							<label for="comprovante">Comprovante:</label>
 							<div class="custom-file">
-								<input type="file" class="custom-file-input" id="customFile" data-browse="Upload">
+								<input id="anexoComprovante" type="file" class="custom-file-input" data-browse="Upload">
 								<label class="custom-file-label" for="customFile">Anexar comprovante</label>
 							</div>
 						</div>
