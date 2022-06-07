@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -20,8 +22,12 @@ public class Subcategoria {
 	
 	private Boolean ativo;
 	
+	@ManyToOne
+	@JoinColumn(name = "fk_categoria")
+	private Categoria categoria;
+	
 	@OneToMany(mappedBy = "subcategoria")
-	private List<Operacao> operacoes;
+	private List<Operacao> operacoes;	
 	
 	public Long getId() {
 		return id;

@@ -9,7 +9,7 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<form th:action="@{/operacao/despesa/salvar}" th:object="${operacao}" method="POST">
+				<form th:action="@{/operacao/despesa/salvar}" th:object="${operacao}" method="POST" enctype="multipart/form-data">
 					<div class="form-row">
 						<div class="form-group col-md-8">
 							<label for="descricao">Descrição:</label>
@@ -34,34 +34,18 @@
 						<div class="form-group col-md-5">
 							<label for="categoria">Categoria:</label>
 							<select th:field="*{categoria}" class="form-control">
-								<option value="">Selecione...</option>
-								<option value="1">moradia</option>
-								<option value="2">alimentação</option>
-								<option value="3">educação</option>
-								<option value="4">roupa</option>
-								<option value="5">saúde</option>
-								<option value="6">transportes</option>
-								<option value="7">pagamentos</option>
-								<option value="8">lazer</option>
+								<option  th:each="categoria : ${categorias}" th:text="${categoria.descricao}" th:value="${categoria.id}"></option>
 							</select>
 						</div>
 						<div class="form-group col-md-5">
 							<label for="subcategoria">Sub-categoria:</label>
 							<select th:field="*{subcategoria}" class="form-control">
-								<option value="">Selecione...</option>
-								<option value="1">luz</option>
-								<option value="2">água</option>
-								<option value="3">condomínio</option>
-								<option value="4">supermercado</option>
-								<option value="5">internet</option>
-								<option value="6">móveis</option>
-								<option value="7">reforma</option>
-								<option value="8">outros</option>
+								<option  th:each="subcategoria : ${subcategorias}" th:text="${subcategoria.descricao}" th:value="${subcategoria.id}"></option>
 							</select>
 						</div>
 						<div class="form-group col-md-2">
 							<label for="toggle-event">Status:</label><br />
-							<input value="0" id="toggle-event" type="checkbox" checked 
+							<input id="toggle-event" type="checkbox" th:field="*{pago}" th:value="${pago} != null ? 'PAGO' : 'PENDENTE'"
 								data-toggle="toggle" 
 								data-on="Pago" data-off="Pendente" 
 								data-onstyle="success" data-offstyle="danger" 
@@ -77,7 +61,7 @@
 							<label for="fonte">Fonte:</label><br />					
 							<select th:field="*{fonte}" class="form-control">			
 								<option value="">Selecione...</option>
-								<option  th:each="fonte : ${T(br.com.start.model.enums.Fonte).values()}" th:text="${fonte.getDescricao()}" th:value="${fonte}"></option>
+								<option  th:each="fonte : ${fontes}" th:text="${fonte.descricao}" th:value="${fonte}"></option>
 								<!--
 								<option value="1">Carteira</option>
 								<option value="2">Conta-Corrente</option>
@@ -88,8 +72,8 @@
 						<div class="form-group col-md-9">
 							<label for="comprovante">Comprovante:</label>
 							<div class="custom-file">
-								<input id="anexoComprovante" type="file" class="custom-file-input" data-browse="Upload">
-								<label class="custom-file-label" for="customFile">Anexar comprovante</label>
+								<input name="file" type="file" class="custom-file-input" data-browse="Upload">
+								<label class="custom-file-label" for="anexoComprovante">Anexar comprovante</label>
 							</div>
 						</div>
 					</div>				

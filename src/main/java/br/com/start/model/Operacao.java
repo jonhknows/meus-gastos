@@ -34,7 +34,7 @@ public class Operacao {
 	private LocalDate dataOperacao;
 	
 	@Lob
-	private byte[] anexoComprovante;
+	private String anexoComprovante;
 	
 	private String obs;
 	
@@ -82,11 +82,11 @@ public class Operacao {
 		this.dataOperacao = dataOperacao;
 	}
 
-	public byte[] getAnexoComprovante() {
+	public String getAnexoComprovante() {
 		return anexoComprovante;
 	}
 
-	public void setAnexoComprovante(byte[] anexoComprovante) {
+	public void setAnexoComprovante(String anexoComprovante) {
 		this.anexoComprovante = anexoComprovante;
 	}
 
@@ -97,7 +97,6 @@ public class Operacao {
 	public void setObs(String obs) {
 		this.obs = obs;
 	}
-
 
 	public StatusPagamento getPago() {
 		return pago;

@@ -350,12 +350,18 @@
 	
 		    var activeLink = document.getElementsByClassName("despesa");
 		    activeLink[0].classList.add("active");
-		    
-			  
+			
+			
 		    $('#toggle-event').change(function() {
-		     	alert("ok")
-		    })
-		    
+				var pago = document.getElementById("toggle-event").value;				
+				if(pago == 'PENDENTE'){
+		     		this.setAttribute('value','PAGO');
+		     	}
+		     	else{
+		     		this.setAttribute('value','PENDENTE');
+				}
+		     	
+		    });		    
 	  				
 	   	 	$('#valor').maskMoney({decimal: ',', thousands: '.'});
 	  				 
