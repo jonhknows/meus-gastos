@@ -17,7 +17,7 @@
 						</div>
 						<div class="form-group col-md-4">
 							<label for="valor">Valor:</label>
-							<input placeholder="R$ 0,00" th:field="*{valor}" class="form-control" type="text" />
+							<input placeholder="R$ 0,00" th:field="*{valor}" class="form-control" type="text" />							
 						</div>
 					</div>
 					<div class="form-row">
@@ -31,18 +31,28 @@
 <!-- 							<input type= -->
 <!-- 							"date" class="form-control" id="inputCity"> -->
 <!-- 						</div> -->
-						<div class="form-group col-md-5">
+						<div class="form-group col-md-4">
 							<label for="categoria">Categoria:</label>
-							<select th:field="*{categoria}" class="form-control">
+							<select id="categoria" th:field="*{categoria}" class="form-control select2">
 								<option  th:each="categoria : ${categorias}" th:text="${categoria.descricao}" th:value="${categoria.id}"></option>
 							</select>
 						</div>
-						<div class="form-group col-md-5">
+						<div class="form-group col-md-4">
 							<label for="subcategoria">Sub-categoria:</label>
-							<select th:field="*{subcategoria}" class="form-control">
-								<option  th:each="subcategoria : ${subcategorias}" th:text="${subcategoria.descricao}" th:value="${subcategoria.id}"></option>
+							<select id="subcategoria" th:field="*{subcategoria}" class="form-control select2">
+								<option  th:each="subcategoria : ${subcategorias}" th:text="${subcategoria.descricao}" th:value="${subcategoria.id}"></option>>
 							</select>
 						</div>
+						<div class="form-group col-md-4">		
+							<label for="fonte">Fonte:</label><br />							
+							<select id="fonte" th:field="*{fonte}" class="form-control select2">
+								<option th:each="fonte : ${fontes}" th:text="${fonte.descricao}" th:value="${fonte}"></option>
+							</select>
+						</div>
+						
+					</div>
+					
+					<div class="form-row">
 						<div class="form-group col-md-2">
 							<label for="toggle-event">Status:</label><br />
 							<input id="toggle-event" type="checkbox" th:field="*{pago}" th:value="${pago} != null ? 'PAGO' : 'PENDENTE'"
@@ -51,25 +61,8 @@
 								data-onstyle="success" data-offstyle="danger" 
 								data-width="120" 
 								data-height="38">
-						</div>
-						
-						
-					</div>
-					
-					<div class="form-row">
-						<div class="form-group col-md-3">		
-							<label for="fonte">Fonte:</label><br />					
-							<select th:field="*{fonte}" class="form-control">			
-								<option value="">Selecione...</option>
-								<option  th:each="fonte : ${fontes}" th:text="${fonte.descricao}" th:value="${fonte}"></option>
-								<!--
-								<option value="1">Carteira</option>
-								<option value="2">Conta-Corrente</option>
-								<option value="3">Poupança</option>
-								-->
-							</select>
-						</div>
-						<div class="form-group col-md-9">
+						</div>					
+						<div class="form-group col-md-10">
 							<label for="comprovante">Comprovante:</label>
 							<div class="custom-file">
 								<input name="file" type="file" class="custom-file-input" data-browse="Upload">

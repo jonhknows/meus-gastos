@@ -17,6 +17,8 @@
 <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
 <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
 <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+<link rel="stylesheet" href="plugins/select2/css/select2.min.css">
+<link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 
   <style>
@@ -346,6 +348,7 @@
 	<th:block layout:fragment="despesa-script">
 		<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
+		<script src="plugins/select2/js/select2.full.min.js"></script>
 		<script type="text/javascript" charset="utf-8">
 	
 		    var activeLink = document.getElementsByClassName("despesa");
@@ -364,7 +367,12 @@
 		    });		    
 	  				
 	   	 	$('#valor').maskMoney({decimal: ',', thousands: '.'});
-	  				 
+	   	 	
+	   	 	
+	   	 	 	 	
+	   	 	$(".select2").select2({
+				theme: 'bootstrap4'			    
+			  });
 	
 		</script>
 	</th:block>

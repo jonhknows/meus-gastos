@@ -1,7 +1,7 @@
 package br.com.start.model;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
@@ -25,13 +27,17 @@ public class Operacao {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotNull
+	@Size(max = 30)
 	private String descricao;
 	
+
 	@NumberFormat(pattern = "#,##0.##")
 	private BigDecimal valor;
 	
+	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private LocalDate dataOperacao;
+	private LocalDateTime dataOperacao;
 	
 	@Lob
 	private String anexoComprovante;
@@ -74,11 +80,11 @@ public class Operacao {
 		this.valor = valor;
 	}
 
-	public LocalDate getDataOperacao() {
+	public LocalDateTime getDataOperacao() {
 		return dataOperacao;
 	}
 
-	public void setDataOperacao(LocalDate dataOperacao) {
+	public void setDataOperacao(LocalDateTime dataOperacao) {
 		this.dataOperacao = dataOperacao;
 	}
 
